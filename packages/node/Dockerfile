@@ -10,5 +10,6 @@ ENV TZ utc
 RUN apk add --no-cache tini git curl
 COPY --from=builder /usr/local/lib/node_modules /usr/local/lib/node_modules
 
+ENV SUBQL_NODE_SUBQUERY="/app"
+
 ENTRYPOINT ["/sbin/tini", "--", "/usr/local/lib/node_modules/@subql/node/bin/run"]
-CMD ["-f","/app"]
